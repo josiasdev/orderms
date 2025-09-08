@@ -1,4 +1,8 @@
 package com.github.josiasdev.orderms.listener.dto;
 
-public class OrderCreatedEvent {
+import java.util.List;
+
+public record OrderCreatedEvent(Long codigoPedido,
+                                Long codigoCliente,
+                                List<OrderItemEvent> itens){
 }
