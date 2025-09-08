@@ -1,4 +1,8 @@
 package com.github.josiasdev.orderms.listener.dto;
 
-public class OrderItemEvent {
+import java.math.BigDecimal;
+
+public record OrderItemEvent(String produto,
+                             Integer quantidade,
+                             BigDecimal preco) {
 }
