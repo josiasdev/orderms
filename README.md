@@ -106,12 +106,16 @@ cd orderms
 
 ### Passo 2: Subir a infraestrutura (RabbitMQ e MongoDB)
 ```bash
+cp .env.example .env
+# edite .env com credenciais locais antes de subir
 docker compose up -d
 ```
 > **Nota:** Caso utilize o arquivo dentro de uma subpasta (ex: `docker/docker-compose.yml`), execute `docker compose -f docker/docker-compose.yml up -d`.
 
 ### Passo 3: Iniciar a aplicação Spring Boot
+Exporte as variáveis de ambiente definidas no `.env` (ou configure-as no seu ambiente) antes de iniciar:
 ```bash
+export $(grep -v '^#' .env | xargs)
 ./mvnw spring-boot:run
 ```
 A aplicação estará disponível em `http://localhost:8080`.
@@ -121,7 +125,7 @@ A aplicação estará disponível em `http://localhost:8080`.
 ## Como Testar o Fluxo Completo
 
 ### 1. Publicar um Pedido no RabbitMQ
-1. Acesse o painel do RabbitMQ em `http://localhost:15672` (credenciais padrão definidas no `docker-compose.yml`, geralmente `guest` / `guest` ou `admin` / `123456`).
+1. Acesse o painel do RabbitMQ em `http://localhost:15672` (use as credenciais definidas no seu `.env` / `docker-compose.yml`; padrão local do RabbitMQ: `guest` / `guest`, salvo alteração).
 2. Navegue até a aba **Queues and Streams** e selecione a fila configurada na aplicação (ex: `btg-pactual-order-created`).
 3. Em **Publish message**, cole o payload abaixo e clique em **Publish message**:
 
@@ -175,7 +179,7 @@ curl -X GET "http://localhost:8080/customers/1/orders" \
 ```
 
 ### 3. Inspecionar o Banco no MongoDB Compass
-Conecte-se à string configurada no `application.properties` (ex: `mongodb://admin:123456@localhost:27017`) para visualizar os documentos persistidos em tempo real.
+Conecte-se usando as credenciais configuradas no `.env`/`application.properties` (ex.: `mongodb://<usuario>:<senha>@localhost:27017`) para visualizar os documentos persistidos em tempo real.
 
 ---
 
