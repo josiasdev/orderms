@@ -196,7 +196,7 @@ Conecte-se à string configurada no `application.properties` (ex: `mongodb://adm
 ## Autor
 
 **Francisco Josias da Silva Batista**  
-Graduando em Engenharia de Software — Universidade Federal do Ceará (UFC)  
+Graduando em Engenharia de Software Universidade Federal do Ceará (UFC)  
 * **GitHub:** [github.com/josiasdev](https://github.com/josiasdev)
 * **LinkedIn:** [linkedin.com/in/josias-batista](https://www.linkedin.com/in/josias-batista/)
 * **Portfólio:** [josias-batista-portfolio.vercel.app](https://josias-batista-portfolio.vercel.app)
